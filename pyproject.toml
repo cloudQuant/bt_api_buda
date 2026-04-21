@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "bt_api_buda"
+version = "0.1.0"
+description = "Buda exchange plugin for bt_api"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = ["bt_api_base"]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/bt_api_buda"]
+
+[tool.ruff]
+line-length = 100

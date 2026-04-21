@@ -1,0 +1,13 @@
+"""Tests for exchange_registers/register_buda.py."""
+
+from __future__ import annotations
+
+from bt_api_buda.registry_registration import register_buda
+
+
+class TestRegisterBuda:
+    """Tests for Buda registration module."""
+
+    def test_module_imports(self):
+        """Test module can be imported."""
+        assert register_buda is not None
