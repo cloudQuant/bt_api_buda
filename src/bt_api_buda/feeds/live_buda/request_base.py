@@ -12,6 +12,7 @@ from bt_api_base.feeds.capability import Capability
 from bt_api_base.feeds.feed import Feed
 from bt_api_base.feeds.http_client import HttpClient
 from bt_api_base.logging_factory import get_logger
+
 from bt_api_buda.exchange_data import BudaExchangeDataSpot
 
 

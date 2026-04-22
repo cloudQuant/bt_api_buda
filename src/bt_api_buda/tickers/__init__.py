@@ -1,4 +1,5 @@
 from bt_api_base.containers.tickers.ticker import TickerData
+
 from bt_api_buda.tickers.ticker_utils import parse_float, parse_int
 
 __all__ = ["BudaRequestTickerData"]

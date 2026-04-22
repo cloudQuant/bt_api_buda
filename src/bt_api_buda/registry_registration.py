@@ -1,9 +1,10 @@
 from __future__ import annotations
 
 from bt_api_base.balance_utils import simple_balance_handler as _buda_balance_handler
+from bt_api_base.registry import ExchangeRegistry
+
 from bt_api_buda.exchange_data import BudaExchangeDataSpot
 from bt_api_buda.feeds.live_buda.spot import BudaRequestDataSpot
-from bt_api_base.registry import ExchangeRegistry
 
 
 def register_buda() -> None:
