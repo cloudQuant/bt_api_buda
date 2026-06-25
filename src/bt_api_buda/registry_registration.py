@@ -7,10 +7,7 @@ from bt_api_buda.exchange_data import BudaExchangeDataSpot
 from bt_api_buda.feeds.live_buda.spot import BudaRequestDataSpot
 
 
-def register_buda() -> None:
-    ExchangeRegistry.register_feed("BUDA___SPOT", BudaRequestDataSpot)
-    ExchangeRegistry.register_exchange_data("BUDA___SPOT", BudaExchangeDataSpot)
-    ExchangeRegistry.register_balance_handler("BUDA___SPOT", _buda_balance_handler)
-
-
-register_buda()
+def register_buda(registry: ExchangeRegistry | type[ExchangeRegistry] = ExchangeRegistry) -> None:
+    registry.register_feed("BUDA___SPOT", BudaRequestDataSpot)
+    registry.register_exchange_data("BUDA___SPOT", BudaExchangeDataSpot)
+    registry.register_balance_handler("BUDA___SPOT", _buda_balance_handler)
