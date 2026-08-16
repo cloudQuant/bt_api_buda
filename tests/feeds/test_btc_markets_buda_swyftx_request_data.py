@@ -1,8 +1,10 @@
 """Module-level docstring."""
 from unittest.mock import MagicMock
+
 from bt_api_btc_markets.feeds.live_btc_markets.request_base import BtcMarketsRequestData
-from bt_api_buda.feeds.live_buda.request_base import BudaRequestData
 from bt_api_swyftx.feeds.live_swyftx.request_base import SwyftxRequestData
+
+from bt_api_buda.feeds.live_buda.request_base import BudaRequestData
 
 
 def test_btc_markets_disconnect_closes_http_client() -> None:
