@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from bt_api_base.error import ErrorTranslator, UnifiedErrorCode
 
 __all__ = ["BudaErrorTranslator"]
@@ -20,6 +21,7 @@ class BudaErrorTranslator(ErrorTranslator):
 
     @staticmethod
     def translate(error_msg: str, status_code: int | None = None) -> UnifiedErrorCode:
+        """translate method"""
         if status_code == 429:
             return UnifiedErrorCode.RATE_LIMIT_ERROR
         for key, code in BudaErrorTranslator.ERROR_MAPPING.items():

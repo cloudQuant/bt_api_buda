@@ -10,6 +10,7 @@ from bt_api_buda.feeds.live_buda.request_base import BudaRequestData
 
 
 class BudaRequestDataSpot(BudaRequestData):
+    """Class BudaRequestDataSpot"""
     @classmethod
     def _capabilities(cls) -> set[Capability]:
         return {
@@ -24,6 +25,7 @@ class BudaRequestDataSpot(BudaRequestData):
         }
 
     def __init__(self, data_queue: Any = None, **kwargs: Any) -> None:
+        """__init__ method"""
         super().__init__(data_queue, **kwargs)
         self.exchange_name = kwargs.get("exchange_name", "BUDA___SPOT")
 
@@ -50,10 +52,12 @@ class BudaRequestDataSpot(BudaRequestData):
         return [ticker], ticker is not None
 
     def get_tick(self, symbol, extra_data=None, **kwargs):
+        """get_tick method"""
         path, params, extra = self._get_tick(symbol, extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra)
 
     def async_get_tick(self, symbol, extra_data=None, **kwargs):
+        """async_get_tick method"""
         path, params, extra = self._get_tick(symbol, extra_data, **kwargs)
         self.submit(
             self.async_request(path, params=params, extra_data=extra), callback=self.async_callback
@@ -82,10 +86,12 @@ class BudaRequestDataSpot(BudaRequestData):
         return [depth], depth is not None
 
     def get_depth(self, symbol, count=20, extra_data=None, **kwargs):
+        """get_depth method"""
         path, params, extra = self._get_depth(symbol, count, extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra)
 
     def async_get_depth(self, symbol, count=20, extra_data=None, **kwargs):
+        """async_get_depth method"""
         path, params, extra = self._get_depth(symbol, count, extra_data, **kwargs)
         self.submit(
             self.async_request(path, params=params, extra_data=extra), callback=self.async_callback
@@ -115,10 +121,12 @@ class BudaRequestDataSpot(BudaRequestData):
         return [candles], candles is not None
 
     def get_kline(self, symbol, period, count=20, extra_data=None, **kwargs):
+        """get_kline method"""
         path, params, extra = self._get_kline(symbol, period, count, extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra)
 
     def async_get_kline(self, symbol, period, count=20, extra_data=None, **kwargs):
+        """async_get_kline method"""
         path, params, extra = self._get_kline(symbol, period, count, extra_data, **kwargs)
         self.submit(
             self.async_request(path, params=params, extra_data=extra), callback=self.async_callback
@@ -147,6 +155,7 @@ class BudaRequestDataSpot(BudaRequestData):
         return [markets], markets is not None
 
     def get_exchange_info(self, extra_data=None, **kwargs):
+        """get_exchange_info method"""
         path, params, extra = self._get_exchange_info(extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra)
 
@@ -173,6 +182,7 @@ class BudaRequestDataSpot(BudaRequestData):
         return [data], data is not None
 
     def get_account(self, symbol="ALL", extra_data=None, **kwargs):
+        """get_account method"""
         path, params, extra = self._get_account(extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra)
 
@@ -199,6 +209,7 @@ class BudaRequestDataSpot(BudaRequestData):
         return [data], data is not None
 
     def get_balance(self, symbol=None, extra_data=None, **kwargs):
+        """get_balance method"""
         path, params, extra = self._get_balance(symbol, extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra)
 
@@ -246,6 +257,7 @@ class BudaRequestDataSpot(BudaRequestData):
         extra_data=None,
         **kwargs,
     ):
+        """make_order method"""
         path, params, extra = self._make_order(
             symbol,
             volume,
@@ -275,6 +287,7 @@ class BudaRequestDataSpot(BudaRequestData):
         return path, {"state": "canceling"}, extra_data
 
     def cancel_order(self, symbol, order_id, extra_data=None, **kwargs):
+        """cancel_order method"""
         path, params, extra = self._cancel_order(symbol, order_id, extra_data, **kwargs)
         return self.request(path, body=params, extra_data=extra)
 
@@ -294,6 +307,7 @@ class BudaRequestDataSpot(BudaRequestData):
         return path, {}, extra_data
 
     def query_order(self, symbol, order_id, extra_data=None, **kwargs):
+        """query_order method"""
         path, params, extra = self._query_order(symbol, order_id, extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra)
 
@@ -312,5 +326,6 @@ class BudaRequestDataSpot(BudaRequestData):
         return path, {"state": "pending"}, extra_data
 
     def get_open_orders(self, symbol=None, extra_data=None, **kwargs):
+        """get_open_orders method"""
         path, params, extra = self._get_open_orders(symbol, extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra)

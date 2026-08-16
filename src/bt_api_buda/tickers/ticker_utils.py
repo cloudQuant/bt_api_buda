@@ -1,21 +1,22 @@
+"""Module-level docstring."""
 from __future__ import annotations
 
 from typing import Any
 
 
 def parse_float(value: Any) -> float | None:
+    """parse_float function"""
     if value is None:
         return None
-    try:
-        return float(value)
+    try: return float(value)
     except (ValueError, TypeError):
         return None
 
 
 def parse_int(value: Any) -> int | None:
+    """parse_int function"""
     if value is None:
         return None
-    try:
-        return int(value)
+    try: return int(value)
     except (ValueError, TypeError):
         return None

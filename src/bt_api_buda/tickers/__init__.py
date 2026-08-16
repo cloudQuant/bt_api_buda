@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from bt_api_base.containers.tickers.ticker import TickerData
 
 from bt_api_buda.tickers.ticker_utils import parse_float, parse_int
@@ -15,6 +16,7 @@ class BudaRequestTickerData(TickerData):
         asset_type: str,
         has_been_json_encoded: bool = False,
     ) -> None:
+        """__init__ method"""
         super().__init__(ticker_info, has_been_json_encoded)
         self.symbol_name = symbol_name
         self.asset_type = asset_type
@@ -34,6 +36,7 @@ class BudaRequestTickerData(TickerData):
         self.has_been_init_data = False
 
     def init_data(self) -> "BudaRequestTickerData":
+        """init_data method"""
         if not self.has_been_json_encoded:
             import json
 
@@ -58,28 +61,37 @@ class BudaRequestTickerData(TickerData):
         return self
 
     def get_exchange_name(self) -> str:
+        """get_exchange_name method"""
         return self.exchange_name
 
     def get_local_update_time(self) -> float:
+        """get_local_update_time method"""
         return self.local_update_time
 
     def get_symbol_name(self) -> str:
+        """get_symbol_name method"""
         return self.symbol_name
 
     def get_ticker_symbol_name(self) -> str | None:
+        """get_ticker_symbol_name method"""
         return self.ticker_symbol_name
 
     def get_asset_type(self) -> str:
+        """get_asset_type method"""
         return self.asset_type
 
     def get_server_time(self) -> float | None:
+        """get_server_time method"""
         return getattr(self, "timestamp", None)
 
     def get_bid_price(self) -> float | None:
+        """get_bid_price method"""
         return self.bid_price
 
     def get_ask_price(self) -> float | None:
+        """get_ask_price method"""
         return self.ask_price
 
     def get_last_price(self) -> float | None:
+        """get_last_price method"""
         return self.last_price

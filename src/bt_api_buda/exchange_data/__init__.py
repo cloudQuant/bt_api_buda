@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from bt_api_base.containers.exchanges.exchange_data import ExchangeData
 
 __all__ = ["BudaExchangeData", "BudaExchangeDataSpot"]
@@ -7,6 +8,7 @@ class BudaExchangeData(ExchangeData):
     """Base class for Buda exchange."""
 
     def __init__(self) -> None:
+        """__init__ method"""
         super().__init__()
         self.exchange_name = "buda"
         self.rest_url = "https://api.buda.com"
@@ -28,6 +30,7 @@ class BudaExchangeDataSpot(BudaExchangeData):
     """Buda Spot exchange configuration."""
 
     def __init__(self) -> None:
+        """__init__ method"""
         super().__init__()
         self.asset_type = "spot"
         self.rest_paths = {}

@@ -17,6 +17,7 @@ from bt_api_buda.exchange_data import BudaExchangeDataSpot
 
 
 class BudaRequestData(Feed):
+    """Class BudaRequestData"""
     @classmethod
     def _capabilities(cls) -> set[Capability]:
         return {
@@ -31,6 +32,7 @@ class BudaRequestData(Feed):
         }
 
     def __init__(self, data_queue: Any = None, **kwargs: Any) -> None:
+        """__init__ method"""
         super().__init__(data_queue, **kwargs)
         self.data_queue = data_queue
         self.exchange_name = kwargs.get("exchange_name", "BUDA___SPOT")
@@ -69,6 +71,7 @@ class BudaRequestData(Feed):
         return headers
 
     def request(self, path: str, params=None, body=None, extra_data=None, timeout=10):
+        """request method"""
         method = path.split()[0] if " " in path else "GET"
         request_path = path.split()[1] if " " in path else path
         headers = self._get_headers(method, request_path, str(body) if body else "")
@@ -86,6 +89,7 @@ class BudaRequestData(Feed):
             raise
 
     async def async_request(self, path: str, params=None, body=None, extra_data=None, timeout=5):
+        """async_request method"""
         method = path.split()[0] if " " in path else "GET"
         request_path = path.split()[1] if " " in path else path
         headers = self._get_headers(method, request_path, str(body) if body else "")
@@ -103,6 +107,7 @@ class BudaRequestData(Feed):
             raise
 
     def async_callback(self, future):
+        """async_callback method"""
         try:
             result = future.result()
             if result is not None:
@@ -116,14 +121,18 @@ class BudaRequestData(Feed):
         return RequestData(response, extra_data)
 
     def push_data_to_queue(self, data):
+        """push_data_to_queue method"""
         if self.data_queue is not None:
             self.data_queue.put(data)
 
     def connect(self):
+        """connect method"""
         pass
 
     def disconnect(self):
+        """disconnect method"""
         super().disconnect()
 
     def is_connected(self):
+        """is_connected method"""
         return True

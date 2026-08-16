@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from unittest.mock import MagicMock
 from bt_api_btc_markets.feeds.live_btc_markets.request_base import BtcMarketsRequestData
 from bt_api_buda.feeds.live_buda.request_base import BudaRequestData
@@ -5,6 +6,7 @@ from bt_api_swyftx.feeds.live_swyftx.request_base import SwyftxRequestData
 
 
 def test_btc_markets_disconnect_closes_http_client() -> None:
+    """test_btc_markets_disconnect_closes_http_client function"""
     request_data = BtcMarketsRequestData()
     request_data._http_client.close = MagicMock()
 
@@ -14,6 +16,7 @@ def test_btc_markets_disconnect_closes_http_client() -> None:
 
 
 def test_buda_disconnect_closes_http_client() -> None:
+    """test_buda_disconnect_closes_http_client function"""
     request_data = BudaRequestData()
     request_data._http_client.close = MagicMock()
 
@@ -23,6 +26,7 @@ def test_buda_disconnect_closes_http_client() -> None:
 
 
 def test_buda_accepts_public_private_key_aliases() -> None:
+    """test_buda_accepts_public_private_key_aliases function"""
     request_data = BudaRequestData(public_key="public-key", private_key="secret-key")
     headers = request_data._get_headers("GET", "/api/v2/balances")
 
@@ -32,6 +36,7 @@ def test_buda_accepts_public_private_key_aliases() -> None:
 
 
 def test_swyftx_disconnect_closes_http_client() -> None:
+    """test_swyftx_disconnect_closes_http_client function"""
     request_data = SwyftxRequestData(None)
     request_data._http_client.close = MagicMock()
 
@@ -41,6 +46,7 @@ def test_swyftx_disconnect_closes_http_client() -> None:
 
 
 def test_swyftx_falls_back_to_api_key_when_public_key_is_empty() -> None:
+    """test_swyftx_falls_back_to_api_key_when_public_key_is_empty function"""
     request_data = SwyftxRequestData(None, public_key="", api_key="public-key")
 
     assert request_data.api_key == "public-key"
